@@ -1,3 +1,5 @@
+
+
 /*
 Desarrolla un programa con las siguientes clases:
 
@@ -42,17 +44,13 @@ método para realizar operaciones similares pero con diferentes conjuntos de dat
 
 */
 
+/*
 class Cafetera(private val ubicacion: String){
 
     var capacidadMax: Int = 1000
-
-    init {
-        require(this.capacidadMax in 0..1000){"Error - La capacidad debe estar entre 0-1000"}
-    }
-
     var cantidad: Int = 0
 
-    // Constructor 2
+    // Constructor 2   (Si en el primario no hubiese ningun valor entre parentesis,el this estaria vacio -> :this())
     constructor(ubicacion: String, capacidadMax: Int ) : this(ubicacion){
 
         this.capacidadMax = capacidadMax
@@ -60,8 +58,8 @@ class Cafetera(private val ubicacion: String){
     }
 
     // Contructor 3
-    constructor(ubicacion: String, capacidadMax: Int, cantidad: Int) : this(ubicacion, capacidadMax){
-        //this.capacidadMax = capacidadMax
+    constructor(ubicacion: String, capacidadMax: Int, cantidad: Int) : this(ubicacion){
+        this.capacidadMax = capacidadMax
         this.cantidad = cantidad
         if (cantidad > this.capacidadMax) this.cantidad = capacidadMax
     }
@@ -75,7 +73,7 @@ class Cafetera(private val ubicacion: String){
     fun servirTaza(taza: Taza){
         if (cantidad > 0){
             if (taza.capacidad < cantidad){
-                taza.llenar(taza.capacidad)
+                taza.llenar()
                 cantidad -= (taza.capacidad)
             }
             else{
@@ -119,18 +117,19 @@ class Taza(private var color: String = "Blanco", var capacidad: Int = 50){
 
     var cantidad: Int = 0
         set(value) {
-            if (cantidad > this.capacidad) field = this.capacidad
-            field = value
+            //Value es el nuevo parametro que se le intenta asignar, y field es = cantidad
+            if (cantidad > this.capacidad) field = this.capacidad else field = value
+
         }
 
 
 
     fun llenar(){
-        cantidad = this.capacidad
+        this.cantidad = this.capacidad
     }
 
     fun llenar(cant:Int){
-        cantidad = cant
+        this.cantidad = cant
     }
 
 
@@ -160,8 +159,8 @@ enum class Color(){
 fun main() {
 
     //TODO: Crear 3 cafeteras en la Sala, Cocina y Oficina
-    val cafetera1 = Cafetera("Sala", 1000)
-    val cafetera2 = Cafetera("Cocina", 750, 750)
+    val cafetera1 = Cafetera("Sala")
+    val cafetera2 = Cafetera("Cocina", 750)
     val cafetera3 = Cafetera("Oficina", 500, 200)
 
     //TODO: Crear una lista de 20 tazas con capacidades aleatorias
@@ -252,8 +251,7 @@ fun main() {
         println(taza.toString())
     }
 
-
-
 }
 
 
+ */
